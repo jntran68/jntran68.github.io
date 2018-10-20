@@ -1,0 +1,33 @@
+Sub HW2():
+    Dim Stock_Total As Double
+ ' get the row number of the last row with data
+    rowCounter = Cells(Rows.Count, "A").End(xlUp).Row
+
+'Set title row
+    Range("H1").Value = "Ticker"
+    Range("I1").Value = "Total Stock Volume"
+    
+    For i = 2 To rowCounter
+
+' If ticker changes then print results
+    If Cells(i + 1, 1).Value <> Cells(i, 1).Value Then
+' store result in variable
+    Stock_Total = Stock_Total + Cells(i, 7).Value
+' Print ticker symbol
+    Range("H" & 2 + j).Value = Cells(i, 1).Value
+' print total
+    Range("I" & 2 + j).Value = Stock_Total
+'reset total
+    Stock_Total = 0
+'move to next row
+    j = j + 1
+'else keep adding to the total volume
+    Else
+    Stock_Total = Stock_Total + Cells(i, 7)
+  
+  
+    End If
+
+  Next i
+
+End Sub
